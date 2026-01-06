@@ -7,7 +7,16 @@ const emailRoutes = require('./src/routes/emails');
 const errorHandler = require('./src/middleware/errorHandler');
 
 const app = express();
-app.use(cors());
+
+// UPDATED CORS (safe + production-ready)
+app.use(cors({
+  origin: [
+    'https://bulkmail-coral-tau.vercel.app',   // your frontend
+    'http://localhost:5173'                    // local dev (optional)
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 connectDB();
