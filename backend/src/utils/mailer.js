@@ -10,6 +10,16 @@ const transport = nodemailer.createTransport({
   }
 });
 
+// Verify SMTP connection configuration
+transport.verify((error, success) => {
+  if (error) {
+    console.error('SMTP connection failed:', error);
+  } else {
+    console.log('SMTP connection verified');
+  }
+});
+
+
 /**
  * sendBulkMail
  * @param {String} subject
