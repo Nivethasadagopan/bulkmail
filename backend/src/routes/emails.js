@@ -49,6 +49,7 @@ router.post('/send-email', auth, async (req, res, next) => {
       });
 
     } catch (sendErr) {
+      console.error('Email send error:', sendErr);
       // Log failure
       const log = await EmailLog.create({
         subject,
